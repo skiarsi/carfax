@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         $cars = Car::all();
 
         foreach ($cars as $car) {
-            $imageCount = 4;
+            $imageCount = 3;
 
             $thumbnailIndex = rand(0, $imageCount - 1); // یکی رو به‌عنوان thumbnail انتخاب کن
 

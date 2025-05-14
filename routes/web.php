@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
+use App\Models\Carmake;
 use App\Models\Carmodel;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -12,9 +13,13 @@ use Inertia\Inertia;
 // index
 Route::get('/', [HomeController::class,'index'])->name('home');
 
+Route::get('/api/brands', function(){
+    return Carmake::get(['id','name','slug']);
+});
+
 // select car models by brand
 Route::get('/api/carmodels/{carbrand}', function($carbrand){
-    return Carmodel::with(['brand'])->where('make_slug',$carbrand)->get();
+    return Carmodel::with(['brand'])->where('make_slug',$carbrand)->get(['id','make_slug','name','slug']);
 })->name('carmodel.bybrand');
 
 // count cars

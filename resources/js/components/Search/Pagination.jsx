@@ -42,15 +42,16 @@ export default function Pagination({searchresult}) {
   return (
     <>
       <div className='bg-white border border-gray-300 rounded-md w-full px-3 py-3 flex flex-row gap-1'>
-        {/* <Pagination result={searchresult} /> */}
         
-        <p className='text-sm text-gray-800 pt-2'>
-          <span className='font-semibold'>{from}</span> - 
-          <span className='font-semibold'>{to}</span> of&nbsp;
-          <span className='font-semibold'>{total}</span> resualts
-        </p>
+        {total!= 0 ? 
+          <p className='text-sm text-gray-800 pt-2'>
+            <span className='font-semibold'>{from}</span> - 
+            <span className='font-semibold'>{to}</span> of&nbsp;
+            <span className='font-semibold'>{total}</span> resualts
+          </p> : ''}
+
+
         {/* Previous */}
-        
         {current_page > 1 && (
           <Link
             href={buildLink(current_page - 1)}
@@ -60,7 +61,7 @@ export default function Pagination({searchresult}) {
           </Link>
         )}
 
-        {/* صفحه اول + نقطه‌چین */}
+        {/* first page & ... */}
         {hasFirst && (
           <>
             <Link href={buildLink(1)} className="px-3 py-1 border rounded">1</Link>
@@ -68,7 +69,7 @@ export default function Pagination({searchresult}) {
           </>
         )}
 
-        {/* صفحات وسط */}
+        {/* middle links */}
         {pageNumbers.map((page) => (
           <Link
             key={page}
@@ -81,7 +82,7 @@ export default function Pagination({searchresult}) {
           </Link>
         ))}
 
-        {/* نقطه‌چین + صفحه آخر */}
+        {/* ... & last page */}
         {hasLast && (
           <>
             <span className="px-2">...</span>

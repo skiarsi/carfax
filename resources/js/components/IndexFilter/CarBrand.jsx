@@ -20,11 +20,11 @@ export default function CarBrand({selectedBrand, changeBrand, setModel}) {
         value={selectedBrand}
         >
           <option className='' value="0">All Brands</option>
-            {carbrands && carbrands.map((brand) => {
-              return (
-                <option key={brand.id} value={brand.slug}>{brand.name}</option>
-              );
-            })}
+          {carbrands && carbrands.map((brand) => {
+            return (
+              <option key={brand.id} value={brand.slug}>{brand.name}</option>
+            );
+          })}
         </select>
       </label>
     </>

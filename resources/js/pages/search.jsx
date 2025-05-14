@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import { Head, Link, usePage } from '@inertiajs/react';
 import Resualt from '../components/Search/Resualt';
 import Pagination from '../components/Search/Pagination';
+import Sidefilter from '../components/Search/Sidefilter';
 
 export default function search() {
   
@@ -19,13 +20,21 @@ export default function search() {
           <div className='w-full bg-gray-100  min-h-screen'>
             <div className="flex-1 flex flex-row pb-5 w-full md:w-11/12 lg:w-10/12 xl:w-[1250px] mx-auto pt-3">
               <div className='hidden md:block md:w-[300px] pe-2'>
-                <div className='rounded-md bg-white'>
-                  &nbsp;
+                <div className='rounded-md bg-white px-2 py-3 shadow-md'>
+                  <Sidefilter />
                 </div>
               </div>
               <div className='flex-1 px-3'>
-                <Resualt searchresult={searchresult} />
-                <Pagination searchresult={searchresult} />
+                {searchresult.total !== 0 ? (
+                  <>
+                    <Resualt searchresult={searchresult} />
+                    <Pagination searchresult={searchresult} />
+                  </>
+                ) : (
+                  <div className="text-center text-gray-500 py-10 bg-white rounded-lg shadow-md">
+                    هیچ نتیجه‌ای یافت نشد.
+                  </div>
+                )}
               </div>
             </div>
           </div>

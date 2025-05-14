@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Carmake;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -53,6 +54,7 @@ class CarController extends Controller
 
         return Inertia::render('search',[
             'searchresult' => $searchresualt,
+            'carbrands' => Carmake::get(['id','name','slug'])
         ]);
     }
 }
