@@ -22,10 +22,14 @@ Route::get('/api/carmodels/{carbrand}', function($carbrand){
     return Carmodel::with(['brand'])->where('make_slug',$carbrand)->get(['id','make_slug','name','slug']);
 })->name('carmodel.bybrand');
 
-// count cars
+
 Route::controller(CarController::class)->group(function (){
+    // count cars
     Route::get('/api/vehicles/count', 'count')->name('cars.count');
+    // search resualt
     Route::get('/cars', 'resualt')->name('cars.filterresualt');
+    // one car
+    Route::get('/car/{id}', 'details')->name('car.details');
 });
 
 // dashboard

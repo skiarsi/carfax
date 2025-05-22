@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { usePage } from '@inertiajs/react';
+import { usePage,router } from '@inertiajs/react';
+
 import axios from 'axios';
 
-export default function CarBrands({brand, chBrand}) {
+export default function CarBrands({brand}) {
 
   const [allBrands, setAllbrands] = useState([]);
   
@@ -11,13 +12,26 @@ export default function CarBrands({brand, chBrand}) {
       await axios.get(`/api/brands`)
               .then((res)=>{
                 setAllbrands(res.data);
-              })
+              }).catch(function (error) {
+                console.log(error.toJSON());
+              });
     }
     resualt();
   },[])
 
   const handleChange = (e) =>{
-    chBrand(e.target.value);
+    const newBrand = e.target.value;
+    
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set('brand', newBrand);
+    
+    // reset model to 0
+    searchParams.set('model', '0');
+
+    router.visit(`${window.location.pathname}?${searchParams.toString()}`, {
+      preserveScroll: true,
+      preserveState: true, // یا false اگه بخوای همه چیز ریست بشه
+    });
   }
   
   

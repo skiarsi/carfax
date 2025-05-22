@@ -105,7 +105,7 @@ export default function IndexFilter() {
       <div className='flex flex-row px-1 py-3'>
         {/* <Link href={`${route('cars.filterresualt')}?brand=${brand}&model=${selectedModel}&year=${selectedYear}&price=${price}&mileage=${mileage}&transmission=${transmission}&title=${title}&bodytype=${bodytype}&drivetrain=${drivetrain}`}>resualts</Link> */}
         <ResultButton
-          link= {`${route('cars.filterresualt')}?brand=${brand}&model=${selectedModel}&year=${selectedYear}&price=${price}&mileage=${mileage}&transmission=${transmission}&title=${title}&bodytype=${bodytype}&drivetrain=${drivetrain}`}
+          link= {`${route('cars.filterresualt')}?brand=${brand}&model=${selectedModel}&yearmin=${selectedYear}&yearmax=0&price=${price}&mileage=${mileage}&transmission=${transmission}&title=${title}&bodytype=${bodytype}&drivetrain=${drivetrain}&sort=date-asc`}
           count={count}
           loading={loading}
           filters={showmore} setFilters={setShowmore} />

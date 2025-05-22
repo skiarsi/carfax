@@ -111,12 +111,21 @@ class Car extends Model
     }
 
 
-    // by year
+    // by year (after)
     public function scopeByYear($query, $value) {
         if(isset($value)){
             if($value == '0' || $value == 'any')
                 return $query->whereNotNull('year');
             return $query->where('year','>=', $value);
+        }
+    }
+
+     // by year (before)
+     public function scopeByYearBefore($query, $value) {
+        if(isset($value)){
+            if($value == '0' || $value == 'any')
+                return $query->whereNotNull('year');
+            return $query->where('year','<=', $value);
         }
     }
 
@@ -195,23 +204,27 @@ class Car extends Model
     public function scopeSort($query, $sort)
 {
     switch ($sort) {
-        case 'date-desc':
-            return $query->orderBy('created_at', 'desc');
-        case 'date-asc':
-            return $query->orderBy('created_at', 'asc');
         case 'price-desc':
             return $query->orderBy('price', 'desc');
         case 'price-asc':
             return $query->orderBy('price', 'asc');
+        
         case 'mileage-desc':
             return $query->orderBy('mileage', 'desc');
         case 'mileage-asc':
             return $query->orderBy('mileage', 'asc');
+            
+        case 'date-desc':
+            return $query->orderBy('created_at', 'desc');
+        case 'date-asc':
+            return $query->orderBy('created_at', 'asc');
+        
         case 'year-desc':
             return $query->orderBy('year', 'desc');
         case 'year-asc':
             return $query->orderBy('year', 'asc');
-        default:
+        
+            default:
             return $query;
     }
 }

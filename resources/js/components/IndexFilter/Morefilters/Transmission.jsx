@@ -14,7 +14,7 @@ export default function Transmission({selTransmission, chTransmission}) {
           value={selTransmission}
           onChange={handleChange}
           className='w-full border border-gray-300 py-1 px-2 text-xl bg-white rounded-md disabled:bg-gray-100'>
-            <option value="0">All Transmission</option>
+            <option value="0">Any Transmission</option>
             <option value="automatic">Automatic</option>
             <option value="manuel">Manuel</option>
         </select>

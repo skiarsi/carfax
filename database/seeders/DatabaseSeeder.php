@@ -43,26 +43,26 @@ class DatabaseSeeder extends Seeder
         // Car::factory(10000)->create();
         
 
-        $cars = Car::all();
+        // $cars = Car::all();
 
-        foreach ($cars as $car) {
-            $imageCount = 3;
+        // foreach ($cars as $car) {
+        //     $imageCount = 3;
 
-            $thumbnailIndex = rand(0, $imageCount - 1); // یکی رو به‌عنوان thumbnail انتخاب کن
+        //     $thumbnailIndex = rand(0, $imageCount - 1); // یکی رو به‌عنوان thumbnail انتخاب کن
 
-            for ($i = 0; $i < $imageCount; $i++) {
-                Carimage::create([
-                    'car_id'     => $car->id,
-                    'image_url'  => fake()->imageUrl(),
-                    'isThumbnail' => $i === $thumbnailIndex,
-                ]);
-            }
-        }
+        //     for ($i = 0; $i < $imageCount; $i++) {
+        //         Carimage::create([
+        //             'car_id'     => $car->id,
+        //             'image_url'  => 'https://placehold.co/400x400',
+        //             'isThumbnail' => $i === $thumbnailIndex,
+        //         ]);
+        //     }
+        // }
 
 
         // Carimage::factory(20000)->create();
 
-        // Messages::factory(50)->create();
+        Messages::factory(50)->create();
 
     }
 }

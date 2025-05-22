@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from '@inertiajs/react';
 
-export default function Pagination({searchresult}) {
+export const Pagination = ({searchresult}) => {
   
-  const { current_page, last_page, per_page, from, to, total } = searchresult;
+  const { current_page, last_page, per_page } = searchresult.meta;
   // همه پارامترهای query فعلی رو نگه‌می‌داریم
   const queryString = typeof window !== 'undefined' ? window.location.search : '';
 
@@ -42,13 +42,9 @@ export default function Pagination({searchresult}) {
   return (
     <>
       <div className='bg-white border border-gray-300 rounded-md w-full px-3 py-3 flex flex-row gap-1'>
-        
-        {total!= 0 ? 
-          <p className='text-sm text-gray-800 pt-2'>
-            <span className='font-semibold'>{from}</span> - 
-            <span className='font-semibold'>{to}</span> of&nbsp;
-            <span className='font-semibold'>{total}</span> resualts
-          </p> : ''}
+        <div className='py-2'>
+          <PaginationDetails searchresult={searchresult} size={`text-sm`}  />
+        </div>
 
 
         {/* Previous */}
@@ -95,7 +91,7 @@ export default function Pagination({searchresult}) {
         {/* Next */}
         {current_page < last_page && (
           <Link
-            href={buildLink(current_page)}
+            href={buildLink(current_page+1)}
             className="px-3 py-1 border rounded"
           >
             Next
@@ -105,3 +101,21 @@ export default function Pagination({searchresult}) {
     </>
   )
 }
+
+
+export const PaginationDetails = ({searchresult, size})=>{
+  const { from, to, total } = searchresult.meta;
+  return (
+    <div className='px-1'>
+      {total!= 0 ? 
+        <p className={`${size} text-gray-800`}>
+          <span className='font-semibold'>{from}</span> - 
+          <span className='font-semibold'>{to}</span> of&nbsp;
+          <span className='font-semibold'>{total}</span> resualts
+        </p> : ''}
+    </div>
+  )
+}
+
+
+// export default {Pagination,PaginationDetails};
