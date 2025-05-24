@@ -6,9 +6,29 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
 use App\Models\Carmake;
 use App\Models\Carmodel;
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// use Faker\Factory as Faker;
+
+
+// Route::get('/test', function(){
+//     $faker = Faker::create();
+
+//     DB::table('cardealers')
+//     ->whereNull('latitude')
+//     ->orWhereNull('longitude')
+//     ->get()
+//     ->each(function ($user) use ($faker) {
+//         DB::table('cardealers')
+//             ->where('id', $user->id)
+//             ->update([
+//                 'latitude' => $faker->randomFloat(6, 32.70, 32.90),
+//                 'longitude' => $faker->randomFloat(6, -96.90, -96.60),
+//             ]);
+//     });
+// });
 
 // index
 Route::get('/', [HomeController::class,'index'])->name('home');

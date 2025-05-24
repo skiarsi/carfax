@@ -15,7 +15,7 @@ class HomeController extends Controller
             'mostviews' => Car::with(['thumbnail:id,car_id,image_url','dealersel:id,dealer_title,dealer_slug'])
                                 ->orderby('views','desc')
                                 ->limit(9)
-                                ->get(['id','dealer','car_make','car_model','mileage','price','views','year']),
+                                ->get(['id','slug_id','dealer','car_make','car_model','mileage','price','views','year']),
         ]);
     }
 }

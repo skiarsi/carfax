@@ -23,6 +23,16 @@ class CarResource extends JsonResource
             'descrip' => Str::limit($this->description, 160),
             'mileage' => number_format($this->mileage),
             'mpg' => $this->mpg,
+            'details' => [
+                'dealer' => $this->dealer_description,
+                'title' => $this->title_description,
+                'description' =>$this->description
+            ],
+            'colors' => [
+                'exterior' => $this->exterior_color,
+                'interior' => $this->interior_color
+            ],
+            'feature' => $this->feature,
 
             'thumbnail' => [
                 'id' => $this->thumbnail->id,
@@ -51,7 +61,10 @@ class CarResource extends JsonResource
                 'id' => $this->dealersel->id,
                 'name' => $this->dealersel->dealer_title,
                 'address' => $this->dealersel->address,
-                'slug' => $this->dealersel->dealer_slug
+                'slug' => $this->dealersel->dealer_slug,
+                'avatar' => $this->dealersel->dealer_logo,
+                'lat' => $this->dealersel->latitude,
+                'lon' => $this->dealersel->longitude
             ],
 
             'transmission' => [
@@ -72,6 +85,10 @@ class CarResource extends JsonResource
 
             'fueltype' => [
                 'title' => $this->fueltype->fueltype_title
+            ],
+
+            'bodytype' => [
+                'title' => $this->bodytype->bodystyle_title
             ]
         ];
     }

@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        // Cardealers::factory(300)->create();
+        // User::factory(600)->create();
+        // Cardealers::factory(40)->create();
 
         
         // Carmake::factory(28)->create();
@@ -44,7 +44,6 @@ class DatabaseSeeder extends Seeder
         
 
         // $cars = Car::all();
-
         // foreach ($cars as $car) {
         //     $imageCount = 3;
 

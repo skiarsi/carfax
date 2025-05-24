@@ -14,12 +14,12 @@ export default function MostViews() {
         {mostviews.map(car => {
           const formattedNumber = new Intl.NumberFormat('en-US').format(car.price);
           return(
-            <div key={car.id} className='bg-white shadow-sm w-full rounded-md flex flex-row overflow-hidden'>
+            <div key={car.slug_id} className='bg-white shadow-sm w-full rounded-md flex flex-row overflow-hidden'>
               <div className='bg-gray-400 h-[140px] w-[140px]'>
                 <img src={`${car.thumbnail.image_url}?text=${car.car_make+'\\n'+car.car_model}`} />
               </div>
               <div className='flex-1 px-2'>
-                <Link href={`/car/${car.id}`} className='font-bold text-lg text-blue-500 leading-4  my-0'>{car.car_make} {car.car_model}</Link>
+                <Link href={`/car/${car.slug_id}`} className='font-bold text-lg text-blue-500 leading-4  my-0'>{car.car_make} {car.car_model}</Link>
                 <p className='text-sm text-gray-800 flex flex-row gap-0 my-0'>{car.year}</p>
                 <p className='text-sm text-gray-800 flex flex-row gap-0 my-0'>
                     <FaRegEye className=" mt-1 pt-0.5 w-[15px]" />&nbsp;&nbsp;{car.views}&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;<FaDollarSign className=" mt-1 pt-0.5 w-[15px]" />{formattedNumber}

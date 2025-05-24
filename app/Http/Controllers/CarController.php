@@ -53,6 +53,7 @@ class CarController extends Controller
                             'title',
                             'drivetype',
                             'engintype',
+                            'bodytype',
                             'fueltype'
                         ])
                         ->byMake($brand)
@@ -66,7 +67,7 @@ class CarController extends Controller
                         ->ByBody($bodytype)
                         ->ByDrive($drivetrain)
                         ->sort($sort)
-                        ->select(['id','slug_id','year','price','thumbnail','mileage','mpg','car_make','car_model','description','dealer','transmission_type','car_title','drive_type','engin_type','fuel_type'])
+                        ->select(['id','slug_id','year','price','thumbnail','mileage','mpg','car_make','car_model','description','dealer','transmission_type','car_title','drive_type','engin_type','fuel_type','body_type'])
                         ->paginate(20);
 
         return Inertia::render('search',[
@@ -78,7 +79,7 @@ class CarController extends Controller
 
     public function details(string $id) {
         
-        $car = Car::where('slug_id', $id)->with(['carmake','carmodel','images','dealersel'])->first();
+        $car = Car::where('slug_id', $id)->with(['carmake','carmodel','images','dealersel','bodytype','fueltype'])->first();
 
         return Inertia::render('car', [
             'cardetails' => new CarResource($car)->resolve(),

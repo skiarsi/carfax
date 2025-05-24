@@ -6,12 +6,12 @@ export default function ImageCarousel({imgs}) {
 
 
   return (
-    <div className='flex flex-col w-full'>
+    <div className='flex flex-col gap-3 w-full'>
       <div className='bg-black rounded-md w-full min-h-[300px] border border-gray-400'>
         <img src={`${selectedImg.image_url}?text=${selectedImg.id}`} className='w-full max-h-[600px] mx-auth' />
       </div>
-      <div className="overflow-x-auto bg-white border border-gray-300 py-3 my-6 ">
-        <div className="flex space-x-1 min-w-max py-1 px-3">
+      <div className="overflow-x-auto bg-white border border-gray-300 py-3 rounded-md ">
+        <div className="flex space-x-1 min-w-max px-3">
           {imgs.map((img)=>{
             return (
               <img
