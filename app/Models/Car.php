@@ -16,6 +16,17 @@ class Car extends Model
 
     // relations
 
+    // relation with reviews ( CarReviews )
+    public function latestReviews() {
+        return $this->hasMany(Carreview::class,'car_id')->latest()->limit(3);
+    }  
+
+    // all reviews
+    public function allReviews()
+    {
+        return $this->hasMany(Carreview::class, 'car_id');
+    }
+
 
     // relation with thumbnail
     public function thumbnail() : HasOne {

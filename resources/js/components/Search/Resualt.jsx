@@ -12,8 +12,8 @@ export default function Resualt({searchresult}) {
           return (
             <div key={car.id} className='bg-white rounded-md overflow-hidden shadow-md border border-gray-300 flex flex-col md:flex-row'>
               <Link href={`/car/${car.slug_id}`}>
-                <div className='w-full md:w-[250px] h-auto md:h-[250px] overflow-hidden bg-gray-200'>
-                  <img className='w-full' src={car.thumbnail.imageUrl} />
+                <div className='w-full overflow-hidden bg-gray-200'>
+                  <img className='object-cover w-full md:max-w-[300px]' src={car.thumbnail_url ? `${car.thumbnail_url}?text=${car.carmake.name} ${car.carmodel.name}` : 'storage/imgs/car.jpg'} />
                 </div>
               </Link>
               <div className='flex-1 px-2 py-3'>

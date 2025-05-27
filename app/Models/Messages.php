@@ -13,6 +13,16 @@ class Messages extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'name',
+        // 'zipCode',
+        'email',
+        'phone',
+        'message',
+        'car',
+        'dealer'
+    ];
+
 
     // relati with messages
     public function message() : BelongsToMany {

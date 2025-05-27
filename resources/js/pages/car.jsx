@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Head, Link, usePage } from '@inertiajs/react';
 import Header from '../components/Header';
 import Sidefilter from '../components/Search/Sidefilter';
@@ -6,12 +6,12 @@ import ImageCarousel from '../components/CarDetails/ImageCarousel';
 import CarDetails from '../components/CarDetails/CarDetails';
 import CarHighlights from '../components/CarDetails/CarHighlights';
 import CarDealer from '../components/CarDetails/CarDealer';
+import SendDealerMsg from '../components/ViewComponents/SendDealerMsg';
+import Carreviews from '../components/CarDetails/Carreviews';
+import Suggestioncars from '../components/ViewComponents/Suggestioncars';
 
 export default function car() {
-  const { cardetails } = usePage().props;
-  console.log(cardetails);
-
-    
+  const { cardetails, ratingDistribution } = usePage().props;    
       
   if(!cardetails){
     return <>
@@ -24,8 +24,19 @@ export default function car() {
   // make a name for title
   const carname = cardetails.year+' '+cardetails.carmake.name +' '+ cardetails.carmodel.name
 
-  const sortedImages = cardetails.images.sort((a, b) => b.isThumbnail - a.isThumbnail);
+  /*
+    sort car's images
+    always first thumbnail
+    then other pictures
+  */
+  const sortedImages = cardetails.images.list.sort((a, b) => b.isThumbnail - a.isThumbnail);
   
+  const inputRef = useRef(null);
+
+  const handleFocus = () => {
+    inputRef.current?.focus();
+  };
+
   return (
     <>
       <Head title={carname}></Head>
@@ -33,16 +44,18 @@ export default function car() {
         <div className="h-[40px] bg-blue-500">
             <Header />
         </div>
-        <div className='w-full bg-gray-100  min-h-screen'>
+        <div className='w-full bg-gray-100  min-h-screen  pt-5'>
           <div className="flex-1 flex flex-row pb-5 w-11/12 md:w-11/12 lg:w-10/12 xl:w-[1250px] mx-auto">
             <div className='w-8/12 flex flex-col gap-3 '>
               <ImageCarousel imgs={sortedImages} />
               <CarDetails cardetails={cardetails} />
               <CarHighlights cardetails={cardetails} />
-              <CarDealer cardetails={cardetails} />
+              <CarDealer onClickText={handleFocus} cardetails={cardetails} />
+              <Carreviews rateDistrib={ratingDistribution} car={cardetails} />
+              <Suggestioncars currentcar={cardetails} /> 
             </div>
-            <div className='w-4/12 '>
-              &nbsp;
+            <div className='w-4/12 relative'>
+              <SendDealerMsg inpRef={inputRef} car={cardetails} />
             </div>
           </div>
         </div>

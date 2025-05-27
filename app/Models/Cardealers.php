@@ -17,4 +17,8 @@ class Cardealers extends Model
     public function cars() : HasMany {
         return $this->hasMany(Car::class,'dealer','id');
     }
+    
+    public function reviews()  {
+        return $this->hasMany(Review::class, 'dealer_id');
+    }
 }

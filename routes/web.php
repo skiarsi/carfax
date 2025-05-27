@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessagesController;
 use App\Models\Carmake;
 use App\Models\Carmodel;
 // use Illuminate\Support\Facades\DB;
@@ -51,6 +52,10 @@ Route::controller(CarController::class)->group(function (){
     // one car
     Route::get('/car/{id}', 'details')->name('car.details');
 });
+
+
+// messages
+Route::resource('message', MessagesController::class);
 
 // dashboard
 Route::middleware(['auth', 'verified'])->group(function () {
