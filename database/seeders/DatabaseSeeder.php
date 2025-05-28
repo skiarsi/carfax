@@ -10,6 +10,7 @@ use App\Models\Carmake;
 use App\Models\Carmodel;
 use App\Models\Carreview;
 use App\Models\Cartitle;
+use App\Models\DealerWorkingHour;
 use App\Models\Drivetype;
 use App\Models\Engine;
 use App\Models\Fuletype;
@@ -82,17 +83,36 @@ class DatabaseSeeder extends Seeder
         //     }
         // });
 
-        Car::all()->each(function ($car) {
-            $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
+        // Car::all()->each(function ($car) {
+        //     $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
         
-            foreach ($userIds as $userId) {
-                if (Carreview::where('user_id', $userId)->where('car_id', $car->id)->exists()) {
-                    continue;
-                }
+        //     foreach ($userIds as $userId) {
+        //         if (Carreview::where('user_id', $userId)->where('car_id', $car->id)->exists()) {
+        //             continue;
+        //         }
         
-                Carreview::factory()->create([
-                    'user_id' => $userId,
-                    'car_id' => $car->id,
+        //         Carreview::factory()->create([
+        //             'user_id' => $userId,
+        //             'car_id' => $car->id,
+        //         ]);
+        //     }
+        // });
+
+
+
+        // days working hours
+        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+        Cardealers::all()->each(function ($dealer) use ($days) {
+            foreach ($days as $day) {
+                $isClosed = fake()->boolean(10); // ۱۰٪ احتمال تعطیل بودن
+
+                DealerWorkingHour::create([
+                    'dealer_id' => $dealer->id,
+                    'day'       => $day,
+                    'opens_at'  => $isClosed ? null : '09:00:00',
+                    'closes_at' => $isClosed ? null : '17:00:00',
+                    'is_closed' => $isClosed,
                 ]);
             }
         });

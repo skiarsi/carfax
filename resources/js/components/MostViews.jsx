@@ -5,7 +5,6 @@ import { FaDollarSign, FaRegEye } from "react-icons/fa";
 
 export default function MostViews() {
   const { mostviews } = usePage().props;
-  console.log(mostviews);
   
   return (
     <div className='w-[98%] md:w-10/12 lg:w-9/12 xl:w-[1024px] mx-auto'>

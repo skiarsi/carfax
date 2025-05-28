@@ -15,7 +15,7 @@ class CarResource extends JsonResource
      * @return array<string, mixed>
      */
 
-     protected bool $withDetails = true;
+    protected bool $withDetails = true;
 
     public function withDetails(bool $value): static
     {

@@ -3,6 +3,7 @@
 // use App\Http\Controllers\CarModelController;
 
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\Cardealer;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessagesController;
 use App\Models\Carmake;
@@ -53,6 +54,8 @@ Route::controller(CarController::class)->group(function (){
     Route::get('/car/{id}', 'details')->name('car.details');
 });
 
+// car dealer
+Route::resource('dealer', Cardealer::class);
 
 // messages
 Route::resource('message', MessagesController::class);

@@ -11,9 +11,10 @@ export default function search() {
   const { searchresult } = usePage().props;
   const resualt = searchresult.data;
   
+  
   return (
     <>
-      <Head title={`Search for ${searchresult.brand}`}></Head>
+      <Head title={`Search`}></Head>
       <div className="flex flex-col bg-[#FDFDFC] dark:bg-[#0a0a0a]">
           <div className="h-[40px] bg-blue-500">
               <Header />

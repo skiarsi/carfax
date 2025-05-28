@@ -4,13 +4,12 @@ import { Link } from '@inertiajs/react';
 export const Pagination = ({searchresult}) => {
   
   const { current_page, last_page, per_page } = searchresult.meta;
-  // همه پارامترهای query فعلی رو نگه‌می‌داریم
+  
   const queryString = typeof window !== 'undefined' ? window.location.search : '';
 
-  // تابعی برای ساختن URL با صفحه خاص
   const buildLink = (page) => {
     const params = new URLSearchParams(queryString);
-    params.set('page', page); // فقط page رو آپدیت کن
+    params.set('page', page);
     return `?${params.toString()}`;
   };
 
@@ -104,6 +103,7 @@ export const Pagination = ({searchresult}) => {
 
 
 export const PaginationDetails = ({searchresult, size})=>{
+ 
   const { from, to, total } = searchresult.meta;
   return (
     <div className='px-1'>
