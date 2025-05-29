@@ -11,13 +11,13 @@ export default function Resualt({searchresult}) {
         {resualt && resualt.map(car=>{
           return (
             <div key={car.id} className='bg-white rounded-md overflow-hidden shadow-md border border-gray-300 flex flex-col md:flex-row'>
-              <Link href={`/car/${car.slug_id}`}>
+              <Link href={route('car.details',car.slug_id)}>
                 <div className='w-full overflow-hidden bg-gray-200'>
                   <img className='object-cover w-full md:max-w-[300px]' src={car.thumbnail_url ? `${car.thumbnail_url}?text=${car.carmake.name} ${car.carmodel.name}` : 'storage/imgs/car.jpg'} />
                 </div>
               </Link>
               <div className='flex-1 px-2 py-3'>
-                <Link href={`/car/${car.slug_id}`} className='pt-2 text-xl font-bold text-blue-700 block'>
+                <Link href={route('car.details',car.slug_id)} className='pt-2 text-xl font-bold text-blue-700 block'>
                   {car.year} {car.carmake.name} {car.carmodel.name}
                 </Link>
 
@@ -58,7 +58,7 @@ export default function Resualt({searchresult}) {
                 </div>
                 <p className='text-gray-600 text-sm italic'>{car.descrip}</p>
                 
-                <Link className="text-blue-700 my-1" href={`dealer/${car.dealersel.slug}`}>{car.dealersel.name}</Link>
+                <Link className="text-blue-700 my-1" href={route('dealer.show',car.dealersel.slug)}>{car.dealersel.name}</Link>
               </div>
             </div>
           )

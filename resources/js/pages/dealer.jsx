@@ -6,9 +6,14 @@ import DealerworkHours from '../components/ViewComponents/DealerworkHours';
 
 export default function dealer() {
   
-  const { dealer, app } = usePage().props;
-  console.log(dealer);
+  const { dealer, app, cars } = usePage().props;
   
+  
+  // car's list
+  const carlist = cars.data;
+  
+  
+  // starts for review stars
   const rating = dealer.reviews.rate;
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating - fullStars >= 0.5;
@@ -83,16 +88,23 @@ export default function dealer() {
             <div className='w-[300px] p-1 pe-3'>
               <DealerworkHours workhours={dealer.workhours} />
             </div>
-            <div className='flex-1 bg-red-300'>
-              {
-                dealer.cars.map(car => {
-                  return (
-                    <>
-                      <p>{car.carmake.name}</p>
-                    </>
-                  )
-                })
-              }
+            <div className='flex-1 flex flex-col py-1'>
+              <div className='grid grid-cols-2 gap-3'>
+                {
+                  carlist.map(car => {
+                    return (
+                      <div key={car.id} className='bg-white rounded-md border border-gray-200 py-3 px-4 flex flex-row'>
+                        <div className='w-[200px] h-[200px] bg-gray-300 rounded-md overflow-hidden'>
+                          &nbsp;
+                        </div>
+                        <div className='flex-1 ps-2 pt-1'>
+                          <Link href={route('car.details',car.slug_id)}>{car.carmake.name}</Link>
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+              </div>
             </div>
           </div>
         </div>

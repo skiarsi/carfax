@@ -18,12 +18,12 @@ export default function MostViews() {
                 <img src={`${car.thumbnail.image_url}?text=${car.car_make+'\\n'+car.car_model}`} />
               </div>
               <div className='flex-1 px-2'>
-                <Link href={`/car/${car.slug_id}`} className='font-bold text-lg text-blue-500 leading-4  my-0'>{car.car_make} {car.car_model}</Link>
+                <Link href={route('car.details',car.slug_id)} className='font-bold text-lg text-blue-500 leading-4  my-0'>{car.car_make} {car.car_model}</Link>
                 <p className='text-sm text-gray-800 flex flex-row gap-0 my-0'>{car.year}</p>
                 <p className='text-sm text-gray-800 flex flex-row gap-0 my-0'>
                     <FaRegEye className=" mt-1 pt-0.5 w-[15px]" />&nbsp;&nbsp;{car.views}&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;<FaDollarSign className=" mt-1 pt-0.5 w-[15px]" />{formattedNumber}
                 </p>
-                <Link className="font-bold text-blue-900" href={`/dealer/${car.dealersel.dealer_slug}`}>{car.dealersel.dealer_title}</Link>
+                <Link className="font-bold text-blue-900" href={route('car.details',car.dealersel.dealer_slug)}>{car.dealersel.dealer_title}</Link>
               </div>
             </div>
           );
