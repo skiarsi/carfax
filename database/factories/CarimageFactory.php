@@ -19,7 +19,7 @@ class CarimageFactory extends Factory
     {
         return [
             'car_id'    => DB::table('cars')->inRandomOrder()->value('id'),
-            'image_url' => 'https://placehold.co/600x600/aaaaaa/FFF',
+            'image_url' => 'https://placehold.co/400x400',
         ];
     }
 }
