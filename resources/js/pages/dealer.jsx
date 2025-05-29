@@ -3,11 +3,13 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import Header from '../components/Header';
 import { Mail, MapPin, Phone, SquareArrowOutUpRight } from 'lucide-react';
 import DealerworkHours from '../components/ViewComponents/DealerworkHours';
+import DealerReviews from '../components/ViewComponents/DealerReviews';
 
 export default function dealer() {
   
   const { dealer, app, cars } = usePage().props;
   
+  console.log(cars);
   
   // car's list
   const carlist = cars.data;
@@ -85,8 +87,9 @@ export default function dealer() {
             </div>
           </div>
           <div className='w-full md:w-10/12 px-2 md:px-0 xl:w-[1250px] mx-auto flex flex-row py-3'>
-            <div className='w-[300px] p-1 pe-3'>
+            <div className='w-[300px] p-1 pe-3 flex flex-col gap-4'>
               <DealerworkHours workhours={dealer.workhours} />
+              <DealerReviews />
             </div>
             <div className='flex-1 flex flex-col py-1'>
               <div className='grid grid-cols-2 gap-3'>
@@ -94,11 +97,27 @@ export default function dealer() {
                   carlist.map(car => {
                     return (
                       <div key={car.id} className='bg-white rounded-md border border-gray-200 py-3 px-4 flex flex-row'>
-                        <div className='w-[200px] h-[200px] bg-gray-300 rounded-md overflow-hidden'>
-                          &nbsp;
-                        </div>
+                        <Link className='text-sky-700 text-xl' href={route('car.details',car.slug_id)}>
+                          <div className='w-[180px] h-[180px] bg-gray-300 rounded-md overflow-hidden'>
+                            <img src={car.thumbnail_url} className='w-full' />
+                          </div>
+                        </Link>
                         <div className='flex-1 ps-2 pt-1'>
-                          <Link href={route('car.details',car.slug_id)}>{car.carmake.name}</Link>
+                          <Link className='text-sky-700 text-xl' href={route('car.details',car.slug_id)}>
+                            {car.year} {car.carmake.name} {car.carmodel.name}
+                          </Link>
+                          <div className='flex flex-col'>
+                            <span>{car.mileage} mile</span>
+                            <p className='text-2xl font-bold py-0 '>
+                              <span className='text-lg align-super relative top-1 me-0.5 font-normal'>$</span>
+                              <span>{car.price}</span>
+                            </p>
+                            <div className='flex flex-row gap-2 py-2'>
+                              <span className='text-sm bg-gray-200 px-2 rounded-md'>{car.drive.title}</span>
+                              <span className='text-sm bg-gray-200 px-2 rounded-md'>{car.bodytype.title}</span>
+                              <span className='text-sm bg-gray-200 px-2 rounded-md'>{car.engine.title}</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )

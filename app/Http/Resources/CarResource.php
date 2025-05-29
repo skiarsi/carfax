@@ -35,7 +35,7 @@ class CarResource extends JsonResource
             'mpg' => $this->withDetails ? $this->mpg : null,
             'thumbnail_url' => $this->thumbnail_url,
             'details' => $this->withDetails ? [
-                'dealer' => $this->dealer_description,
+                'dealer' => Str::substr($this->dealer_description,0,50).'...',
                 'title' => $this->title_description,
                 'description' =>$this->description
             ] : null,

@@ -28,75 +28,75 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(2000)->create();
-        // Cardealers::factory(40)->create();
+        User::factory(2000)->create();
+        Cardealers::factory(40)->create();
 
         
-        // Carmake::factory(28)->create();
-        // Carmodel::factory(500)->create();
+        Carmake::factory(28)->create();
+        Carmodel::factory(500)->create();
 
-        // Bodystyle::factory(10)->create();
-        // Cartitle::factory(12)->create();
-        // Drivetype::factory(4)->create();
-        // Engine::factory(9)->create();
+        Bodystyle::factory(10)->create();
+        Cartitle::factory(12)->create();
+        Drivetype::factory(4)->create();
+        Engine::factory(9)->create();
 
-        // Fuletype::factory(5)->create();
-        // Transmission::factory(2)->create();
+        Fuletype::factory(5)->create();
+        Transmission::factory(2)->create();
 
-        // Car::factory(10000)->create();
+        Car::factory(10000)->create();
         
 
-        // $cars = Car::all();
-        // foreach ($cars as $car) {
-        //     $imageCount = 3;
+        $cars = Car::all();
+        foreach ($cars as $car) {
+            $imageCount = 3;
 
-        //     $thumbnailIndex = rand(0, $imageCount - 1); // یکی رو به‌عنوان thumbnail انتخاب کن
+            $thumbnailIndex = rand(0, $imageCount - 1); // یکی رو به‌عنوان thumbnail انتخاب کن
 
-        //     for ($i = 0; $i < $imageCount; $i++) {
-        //         Carimage::create([
-        //             'car_id'     => $car->id,
-        //             'image_url'  => 'https://placehold.co/400x400',
-        //             'isThumbnail' => $i === $thumbnailIndex,
-        //         ]);
-        //     }
-        // }
+            for ($i = 0; $i < $imageCount; $i++) {
+                Carimage::create([
+                    'car_id'     => $car->id,
+                    'image_url'  => 'https://placehold.co/400x400',
+                    'isThumbnail' => $i === $thumbnailIndex,
+                ]);
+            }
+        }
 
 
-        // Carimage::factory(20000)->create();
+        Carimage::factory(20000)->create();
 
-        // Messages::factory(50)->create();
+        Messages::factory(50)->create();
 
         // reviews
-        // Review::factory()->count(200)->create();
-        // Cardealers::all()->each(function ($dealer) {
-        //     $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
+        Review::factory()->count(200)->create();
+        Cardealers::all()->each(function ($dealer) {
+            $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
         
-        //     foreach ($userIds as $userId) {
-        //         if (Review::where('user_id', $userId)->where('dealer_id', $dealer->id)->exists()) {
-        //             continue;
-        //         }
+            foreach ($userIds as $userId) {
+                if (Review::where('user_id', $userId)->where('dealer_id', $dealer->id)->exists()) {
+                    continue;
+                }
         
-        //         Review::factory()->create([
-        //             'user_id' => $userId,
-        //             'dealer_id' => $dealer->id,
-        //         ]);
-        //     }
-        // });
+                Review::factory()->create([
+                    'user_id' => $userId,
+                    'dealer_id' => $dealer->id,
+                ]);
+            }
+        });
 
-        // Car::all()->each(function ($car) {
-        //     $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
+        Car::all()->each(function ($car) {
+            $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
         
-        //     foreach ($userIds as $userId) {
-        //         if (Carreview::where('user_id', $userId)->where('car_id', $car->id)->exists()) {
-        //             continue;
-        //         }
+            foreach ($userIds as $userId) {
+                if (Carreview::where('user_id', $userId)->where('car_id', $car->id)->exists()) {
+                    continue;
+                }
         
-        //         Carreview::factory()->create([
-        //             'user_id' => $userId,
-        //             'car_id' => $car->id,
-        //         ]);
-        //     }
-        // });
+                Carreview::factory()->create([
+                    'user_id' => $userId,
+                    'car_id' => $car->id,
+                ]);
+            }
+        });
 
 
 

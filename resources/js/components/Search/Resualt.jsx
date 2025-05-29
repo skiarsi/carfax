@@ -3,7 +3,6 @@ import React from 'react'
 
 export default function Resualt({searchresult}) {
   const resualt = searchresult.data;
-  console.log(resualt);
   
   return (
     <>

@@ -44,7 +44,7 @@ class Cardealer extends Controller
         $cars = $dealer->cars()->select(
                                         '*',
                                         DB::raw('(SELECT image_url FROM carimages WHERE carimages.car_id = cars.id AND isThumbnail = 1 LIMIT 1) as thumbnail_url')
-                                    )->paginate(25);
+                                    )->paginate(22);
 
         return Inertia::render('dealer',[
             'app'   => config('app.name'),
