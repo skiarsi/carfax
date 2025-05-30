@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->nullable();
             $table->string('address')->nullable();
+            $table->double('latitude',10,6)->nullable();
+            $table->double('longitude',10,6)->nullable();
             $table->timestamps();
         });
     }

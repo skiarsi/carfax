@@ -18,21 +18,13 @@ class CarFactory extends Factory
      * @return array<string, mixed>
      */
 
-    function generateUniqueCode()
-    {
-        do {
-            $code = Str::random(10);
-        } while (Car::where('custom_id', $code)->exists()); // فرض بر اینکه فیلد custom_id داریم
-
-        return $code;
-    }
-
+     
     public function definition(): array
     {
         $make = DB::table('carmakes')->inRandomOrder()->value('slug');
         return [   
             'views'     => fake()->numberBetween(70,200),
-            'slug_id'   => $this->generateUniqueCode(),
+            'slug_id'   => Str::uuid()->getHex(),
             'car_make'  => $make,
             'car_model'  => DB::table('carmodels')->where('make_slug',$make)->inRandomOrder()->value('slug'),
             'dealer'     => DB::table('cardealers')->inRandomOrder()->value('id'),
@@ -52,10 +44,11 @@ class CarFactory extends Factory
             'interior_color' => 'color '.fake()->word(),
             'exterior_color' => 'color '.fake()->word(),
 
-            'feature' => null,
+            'feature' => fake()->randomElements(['feature#1', 'feature#2', 'feature#3', 'feature#4', 'feature#5'], null),
             'year'      => fake()->numberBetween(1980,2024),
             'price'      => fake()->numberBetween(1500,100000),
             'mileage'      => fake()->numberBetween(0,200000)
         ];
+        
     }
 }

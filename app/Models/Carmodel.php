@@ -12,6 +12,7 @@ class Carmodel extends Model
     /** @use HasFactory<\Database\Factories\CarmodelFactory> */
     use HasFactory;
 
+    
     protected $primaryKey= 'slug';
     protected $keyType= 'string';
 

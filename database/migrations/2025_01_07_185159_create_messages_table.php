@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('dealer')->constrained('cardealers')->cascadeOnDelete();
             $table->foreignId('car')->constrained('cars')->cascadeOnDelete();
             $table->text('message');
+            $table->string('zipCode')->nullable();
             $table->timestamps();
         });
     }

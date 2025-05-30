@@ -23,7 +23,8 @@ class MessagesFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'dealer' => DB::table('cardealers')->inRandomOrder()->value('id'),
             'car'   => DB::table('cars')->inRandomOrder()->value('id'),
-            'message'   => fake()->paragraphs(3,true)
+            'message'   => fake()->paragraphs(3,true),
+            'zipCode'   => fake()->postcode(),
         ];
     }
 }

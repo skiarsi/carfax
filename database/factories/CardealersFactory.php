@@ -28,7 +28,9 @@ class CardealersFactory extends Factory
             'dealer_logo' => fake()->imageUrl(),
             'phone'       => fake()->phoneNumber(),
             'email'       => fake()->email(),
-            'address'     => fake()->address()
+            'address'     => fake()->address(),
+            'latitude'    => fake()->randomFloat(6, 32.6, 33.0),
+            'longitude'   => fake()->randomFloat(6, -97.0, -96.6),
         ];
     }
 }

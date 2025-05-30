@@ -11,6 +11,7 @@ class Carmake extends Model
     /** @use HasFactory<\Database\Factories\CarmakeFactory> */
     use HasFactory;
 
+    // protected $table = 'carmakes';
     protected $primaryKey= 'slug';
     protected $keyType= 'string';
 
