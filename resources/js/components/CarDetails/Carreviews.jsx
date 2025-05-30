@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Carreviews({rateDistrib, car}) {
-  // console.log();
+  console.log(car);
   const fullStars = Math.round(car.reviews.avgreviews);
   // console.log(reviews.user_id.users);
   
@@ -12,7 +12,7 @@ export default function Carreviews({rateDistrib, car}) {
         <div className=' flex flex-row '>
           <div className='w-[150px] flex flex-col justify-center'>
             <span className='w-full text-center'>{car.reviews.countReviews} Reviews</span>
-            <p className='text-blue-500 text-8xl font-semibold text-center'>{(car.reviews.avgreviews).toFixed(1)}</p>
+            <p className='text-blue-500 text-8xl font-semibold text-center'>{(parseFloat(car.reviews.avgreviews)).toFixed(1)}</p>
             <span className='flex flex-row mx-auto'>
             {
               [...Array(5)].map((_,i) => (
@@ -31,7 +31,7 @@ export default function Carreviews({rateDistrib, car}) {
                     style={{ width: `${((rateDistrib[5] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
                     >&nbsp;</div>
                 </div>
-                <span>{((rateDistrib[5] / car.reviews.countReviews) * 100).toFixed(1)}%</span>
+                <span>{(rateDistrib[5]!==null && (rateDistrib[5] / car.reviews.countReviews) * 100).toFixed(1)}%</span>
               </div>
 
               <div className='flex gap-2'>
@@ -42,7 +42,7 @@ export default function Carreviews({rateDistrib, car}) {
                     style={{ width: `${((rateDistrib[4] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
                     >&nbsp;</div>
                 </div>
-                <span>{((rateDistrib[4] / car.reviews.countReviews) * 100).toFixed(1)}%</span>
+                <span>{(rateDistrib[4]!==null && (rateDistrib[4] / car.reviews.countReviews) * 100).toFixed(1)}%</span>
               </div>
 
               <div className='flex gap-2'>
@@ -50,7 +50,7 @@ export default function Carreviews({rateDistrib, car}) {
                 <div className='w-[200px] bg-gray-200 relative'>
                   <div
                     className={`absolute top-0 left-0 bg-amber-400`}
-                    style={{ width: `${((rateDistrib[3] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
+                    style={{ width: `${(rateDistrib[3]!==null && (rateDistrib[3] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
                     >&nbsp;</div>
                 </div>
                 <span>{((rateDistrib[3] / car.reviews.countReviews) * 100).toFixed(1)}%</span>
@@ -61,7 +61,7 @@ export default function Carreviews({rateDistrib, car}) {
                 <div className='w-[200px] bg-gray-200 relative'>
                   <div
                     className={`absolute top-0 left-0 bg-amber-400`}
-                    style={{ width: `${((rateDistrib[2] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
+                    style={{ width: `${(rateDistrib[2]!==null && (rateDistrib[2] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
                     >&nbsp;</div>
                 </div>
                 <span>{((rateDistrib[2] / car.reviews.countReviews) * 100).toFixed(1)}%</span>
@@ -72,7 +72,7 @@ export default function Carreviews({rateDistrib, car}) {
                 <div className='w-[200px] bg-gray-200 relative'>
                   <div
                     className={`absolute top-0 left-0 bg-amber-400`}
-                    style={{ width: `${((rateDistrib[1] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
+                    style={{ width: `${(rateDistrib[1]!==null && (rateDistrib[1] / car.reviews.countReviews) * 100).toFixed(1)}%` }}
                     >&nbsp;</div>
                 </div>
                 <span>{((rateDistrib[1] / car.reviews.countReviews) * 100).toFixed(1)}%</span>
