@@ -29,7 +29,7 @@ export default function Typecategory() {
         </a>
 
         <a href={`/q?bodytype=convertible`} className='flex flex-col bg-white hover:shadow-lg rounded-md overflow-hidden pb-2'>
-          <img className='w-[100px] h-[100px] mx-auto p-1' src={image_path+'/icons/convertibles.png'} />
+          <img className='w-[100px] h-[100px] mx-auto p-1' src="https://i.ibb.co/TM3Tk5LQ/convertibles.png" />
           <span className='font-bold block text-center text-xl'>Convertible Cars</span>
         </a>
         <a href={`/q?bodytype=sedan`} className='flex flex-col bg-white hover:shadow-lg rounded-md overflow-hidden pb-2'>
