@@ -27,7 +27,7 @@ class CarFactory extends Factory
             'slug_id'   => Str::uuid()->getHex(),
             'car_make'  => $make,
             'car_model'  => DB::table('carmodels')->where('make_slug',$make)->inRandomOrder()->value('slug'),
-            'dealer'     => DB::table('cardealers')->inRandomOrder()->value('id'),
+            'dealer'     => DB::table('Cardealer')->inRandomOrder()->value('id'),
 
             'car_title' => DB::table('cartitles')->inRandomOrder()->value('cartitle_slug'),
             'body_type' => DB::table('bodystyles')->inRandomOrder()->value('bodystyle_slug'),

@@ -81,7 +81,7 @@ class Car extends Model
 
     // relation with dealer
     public function dealersel() : BelongsTo {
-        return $this->belongsTo(Cardealers::class,'dealer','id');
+        return $this->belongsTo(Cardealer::class,'dealer','id');
     }
 
     // relate with user like

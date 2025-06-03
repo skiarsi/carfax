@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Cardealers;
+use App\Models\Cardealer;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +20,7 @@ class ReviewFactory extends Factory
     {
         return [
             'user_id' => User::inRandomOrder()->first()->id,
-            'dealer_id' => Cardealers::inRandomOrder()->first()->id,
+            'dealer_id' => Cardealer::inRandomOrder()->first()->id,
             'rating' => fake()->numberBetween(1,5),
             'comment' => fake()->boolean(70) ? fake()->sentence() : null
         ];

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dealer_working_hours', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dealer_id')->constrained('cardealers')->onDelete('cascade');
+            $table->foreignId('dealer_id')->constrained('Cardealer')->onDelete('cascade');
             $table->string('day');
             $table->time('opens_at')->nullable();
             $table->time('closes_at')->nullable();

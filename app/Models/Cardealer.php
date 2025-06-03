@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Cardealers extends Model
+class Cardealer extends Model
 {
-    /** @use HasFactory<\Database\Factories\CardealersFactory> */
+    /** @use HasFactory<\Database\Factories\CardealerFactory> */
     use HasFactory;
+
+    protected $table = 'cardealers';
 
     protected $guarded = [];
 
@@ -30,5 +32,10 @@ class Cardealers extends Model
     
     public function reviews()  {
         return $this->hasMany(Review::class, 'dealer_id');
+    }
+
+    //relation with user
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

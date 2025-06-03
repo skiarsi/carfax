@@ -26,7 +26,7 @@ export default function search() {
                   <Sidefilter />
                 </div>
               </div>
-              <div className='flex-1 px-3'>
+              <div className='flex-1 ps-3'>
                 {searchresult.total !== 0 ? (
                   <>
                     <SortingBar searchresult={searchresult} />

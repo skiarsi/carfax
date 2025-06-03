@@ -16,7 +16,7 @@ return new class extends Migration
             $table->char('slug_id');
             $table->char('car_make');
             $table->char('car_model');
-            $table->foreignId('dealer')->constrained('cardealers')->cascadeOnDelete();
+            $table->foreignId('dealer')->constrained('Cardealer')->cascadeOnDelete();
 
             $table->string('car_title');
             $table->string('body_type');

@@ -4,7 +4,7 @@ use Illuminate\Support\Str;
 
 use App\Models\Bodystyle;
 use App\Models\Car;
-use App\Models\Cardealers;
+use App\Models\Cardealer;
 use App\Models\Carimage;
 use App\Models\Carmake;
 use App\Models\Carmodel;
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(1000)->create();
-        // Cardealers::factory(40)->create();
+        // Cardealer::factory(40)->create();
 
         
         // Carmake::factory(28)->create();
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
         // }
 
 
-        // Car::factory(10)->create();
+        // Car::factory(10000)->create();
         
 
         // $cars = Car::all();
@@ -79,7 +79,6 @@ class DatabaseSeeder extends Seeder
         //     for ($i = 0; $i < $imageCount; $i++) {
         //         Carimage::create([
         //             'car_id'     => $car->id,
-        //             'image_url'  => 'https://placehold.co/400x400',
         //             'isThumbnail' => $i === $thumbnailIndex,
         //         ]);
         //     }
@@ -90,7 +89,8 @@ class DatabaseSeeder extends Seeder
 
         // reviews
         // Review::factory()->count(200)->create();
-        // Cardealers::all()->each(function ($dealer) {
+
+        // Cardealer::all()->each(function ($dealer) {
         //     $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
         
         //     foreach ($userIds as $userId) {
@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
         // });
 
         // Car::all()->each(function ($car) {
-        //     $userIds = User::inRandomOrder()->take(rand(20, 40))->pluck('id');
+        //     $userIds = User::inRandomOrder()->take(rand(3, 4))->pluck('id');
         
         //     foreach ($userIds as $userId) {
         //         if (Carreview::where('user_id', $userId)->where('car_id', $car->id)->exists()) {
@@ -125,7 +125,7 @@ class DatabaseSeeder extends Seeder
         // // days working hours
         // $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-        // Cardealers::all()->each(function ($dealer) use ($days) {
+        // Cardealer::all()->each(function ($dealer) use ($days) {
         //     foreach ($days as $day) {
         //         $isClosed = fake()->boolean(10); // ۱۰٪ احتمال تعطیل بودن
 

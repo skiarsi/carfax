@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cardealers>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cardealer>
  */
-class CardealersFactory extends Factory
+class CardealerFactory extends Factory
 {
     /**
      * Define the model's default state.

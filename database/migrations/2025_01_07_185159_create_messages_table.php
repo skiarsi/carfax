@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone')->nullable();
-            $table->foreignId('dealer')->constrained('cardealers')->cascadeOnDelete();
+            $table->foreignId('dealer')->constrained('Cardealer')->cascadeOnDelete();
             $table->foreignId('car')->constrained('cars')->cascadeOnDelete();
             $table->text('message');
             $table->string('zipCode')->nullable();

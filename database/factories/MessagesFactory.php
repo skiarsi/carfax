@@ -21,7 +21,7 @@ class MessagesFactory extends Factory
             'name'  => fake()->name(),
             'email' => fake()->email(),
             'phone' => fake()->phoneNumber(),
-            'dealer' => DB::table('cardealers')->inRandomOrder()->value('id'),
+            'dealer' => DB::table('Cardealer')->inRandomOrder()->value('id'),
             'car'   => DB::table('cars')->inRandomOrder()->value('id'),
             'message'   => fake()->paragraphs(3,true),
             'zipCode'   => fake()->postcode(),

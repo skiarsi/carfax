@@ -3,34 +3,13 @@
 // use App\Http\Controllers\CarModelController;
 
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\Cardealer;
+use App\Http\Controllers\CardealerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessagesController;
 use App\Models\Carmake;
 use App\Models\Carmodel;
-// use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-
-// use Faker\Factory as Faker;
-
-
-// Route::get('/test', function(){
-//     $faker = Faker::create();
-
-//     DB::table('cardealers')
-//     ->whereNull('latitude')
-//     ->orWhereNull('longitude')
-//     ->get()
-//     ->each(function ($user) use ($faker) {
-//         DB::table('cardealers')
-//             ->where('id', $user->id)
-//             ->update([
-//                 'latitude' => $faker->randomFloat(6, 32.70, 32.90),
-//                 'longitude' => $faker->randomFloat(6, -96.90, -96.60),
-//             ]);
-//     });
-// });
 
 // index
 Route::get('/', [HomeController::class,'index'])->name('home');
@@ -55,16 +34,18 @@ Route::controller(CarController::class)->group(function (){
 });
 
 // car dealer
-Route::resource('dealer', Cardealer::class);
+Route::resource('dealer', CardealerController::class);
 
 // messages
 Route::resource('message', MessagesController::class);
 
 // dashboard
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    // Route::get('dashboard', [DashboardController::class]);
+    // Route::get('dashboard', function () {
+    //     return Inertia::render('dashboard');
+    // })->name('dashboard');
 });
 
 require __DIR__.'/settings.php';

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Cardealers;
+use App\Models\Cardealer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +21,7 @@ class DealerWorkingHourFactory extends Factory
         $isClosed = $this->faker->boolean(10); // 10 درصد تعطیل
 
         return [
-            'dealer_id' => Cardealers::factory(),
+            'dealer_id' => Cardealer::factory(),
             'day' => $day,
             'opens_at' => $isClosed ? null : '09:00:00',
             'closes_at' => $isClosed ? null : '17:00:00',

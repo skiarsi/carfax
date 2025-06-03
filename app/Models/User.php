@@ -9,8 +9,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use App\Models\Cardealer;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
+// use Laravel\Sanctum\HasApiTokens;
+
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $last_name
+ * @property string $username
+ * @property string $email
+ * @property string $password
+ * @property bool $is_active
+ * @property string|null $activation_token
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
@@ -20,6 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
+
     protected $fillable = [
         'name',
         'last_name',
@@ -53,7 +68,16 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+
+
+    // relation with cars
     public function cars() : BelongsToMany {
         return $this->belongsToMany(Car::class);
+    }
+
+    // relarion with dealers
+    // check if user is dealer
+    public function dealer() : HasOne {
+        return $this->hasOne(Cardealer::class);
     }
 }

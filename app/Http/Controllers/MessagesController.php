@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Messages;
+use App\DTOs\MessageDTO;
+use App\Http\Requests\StoreMessageRequest;
+use App\Models\Car;
+// use App\Models\Messages;
+use App\Services\MessageService;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Session;
 
 class MessagesController extends Controller
 {
+
+    protected MessageService $service;
+    public function __construct(MessageService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -15,44 +27,28 @@ class MessagesController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     //
-    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Messages $message)
+    public function store(StoreMessageRequest $request)
     {
-        $validated = $request->validate([
-            'firstName' => ['required','string','min:3','max:25'],
-            'lastName'  => ['required','string','min:3','max:25'],
-            'zipCode'   => ['required', 'regex:/^\d{5}(-\d{4})?$/'],
-            'email'     => ['required','email'],
-            'phone' => ['nullable', 'regex:/^(\+1\s?)?(\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/'],
-            'message' => ['nullable','string','max:100'],
-            'car' => ['required','numeric'],
-            'dealer' => ['required','numeric']
-        ]);
+        $validated = $request->validated();
 
         $name = $validated['firstName'] . ' ' . $validated['lastName'];
 
-        $message = new Messages();
+        $dto = MessageDTO::fromArray([
+            ...$validated,
+            'name' => $name,
+        ]);
 
-        $message->name = $name;
-        $message->zipCode = $validated['zipCode'];
-        $message->email = $validated['email'];
-        $message->phone = $validated['phone'];
-        $message->message =  $validated['message'] != null ? $validated['message'] : "";
-        $message->car = $validated['car'];
-        $message->dealer = $validated['dealer'];
+        $slug = Car::where('id', $dto->car)
+            ->value('slug_id');
         
-        $message->save();
-
+        if($this->service->create($dto)== 'ok') {
+            // $request->session()->flash('success', 'Operation successful!');
+            return redirect()->route('car.details', ['id' => $slug])->with('success', 'Message sent successfully!');
+        }
 
     }
 
@@ -63,14 +59,6 @@ class MessagesController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit(string $id)
-    // {
-    //     //
-    // }
 
     /**
      * Update the specified resource in storage.

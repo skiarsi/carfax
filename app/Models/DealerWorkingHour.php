@@ -10,6 +10,6 @@ class DealerWorkingHour extends Model
 
     public function dealer()
     {
-        return $this->belongsTo(Cardealers::class, 'dealer_id');
+        return $this->belongsTo(Cardealer::class, 'dealer_id');
     }
 }

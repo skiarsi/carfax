@@ -1,0 +1,30 @@
+[90m= [39m[34;4mApp\Models\User[39;24m {#6290
+    [34mid[39m: [35m1[39m,
+    [34mname[39m: "[32msaeed kiarsi[39m",
+    [34memail[39m: "[32msa@sa.com[39m",
+    [34memail_verified_at[39m: "[32m2025-05-31 15:12:26[39m",
+    #[33mpassword[39m: "[32m$2y$12$.xrQGhxDiip.r9co3wh0Cu2r/YsFLH6fnoIX8vVr7.mFqdM/j2/7O[39m",
+    #[33mremember_token[39m: "[32ml8dLva2dGySXVtkd82NkiDng94ImjIDc5krVepu0aXH8xFqjz7NswFuHjSJk[39m",
+    [34mcreated_at[39m: "[32m2025-05-31 15:12:26[39m",
+    [34mupdated_at[39m: "[32m2025-05-31 15:12:26[39m",
+    [34mis_active[39m: [35m0[39m,
+    [34mactivation_token[39m: [36mnull[39m,
+    [34mdealers[39m: [34;4mApp\Models\Cardealer[39;24m {#6299
+      [34mid[39m: [35m1[39m,
+      [34muser_id[39m: [35m1[39m,
+      [34mdealer_title[39m: "[32mStroman-Schulist[39m",
+      [34mdealer_slug[39m: "[32mstroman-schulist[39m",
+      [34mdealer_logo[39m: "[32mhttps://via.placeholder.com/640x480.png/00aabb?text=ipsum[39m",
+      [34mphone[39m: "[32m920-615-6887[39m",
+      [34memail[39m: "[32melmira61@dooley.com[39m",
+      [34maddress[39m: """
+        [32m223 Romaguera Drive[39m\n
+        [32mErynport, RI 40439-7960[39m
+        """,
+      [34mcreated_at[39m: "[32m2025-05-31 15:12:40[39m",
+      [34mupdated_at[39m: "[32m2025-05-31 15:12:40[39m",
+      [34mlatitude[39m: [33m32.719797[39m,
+      [34mlongitude[39m: [33m-96.997374[39m,
+    },
+  }
+

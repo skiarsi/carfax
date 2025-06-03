@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import { usePage,router,useForm } from '@inertiajs/react';
 import { Plus, Minus } from 'lucide-react';
 
 export default function SendDealerMsg({car, inpRef}) {
-  const { auth } = usePage().props;
+  const { auth,flash } = usePage().props;
   const [showNote, setShowNote] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
   const carname = car.year+' '+car.carmodel.name+' '+car.carmake.name;
+
+  
+    
 
   const initialForm = {
     firstName: '',
@@ -24,7 +28,7 @@ export default function SendDealerMsg({car, inpRef}) {
   function handleSubmit(e){
     e.preventDefault()
 
-    post('/message', {
+    post(route('message.store'), {
       preserveScroll: true,
       onSuccess: () => {
 				setData(initialForm);
@@ -44,12 +48,22 @@ export default function SendDealerMsg({car, inpRef}) {
 
   return (
     <div className='p-3 w-full sticky top-4'>
+      
       <p className='font-semibold text-2xl'>I'm interesting in this car
         <span className='block font-normal text-xl'>{carname}</span>
       </p>
       
       <form className="space-y-3 bg-white border border-gray-300 p-4 mt-5 rounded-md" onSubmit={handleSubmit}>
         <h2 className="text-lg font-semibold">Your Contact Information</h2>
+        {
+          flash?.success && (
+            <>
+              <div className="bg-green-100 text-green-800 border border-green-900 p-3 rounded-md mt-2">
+                <p className="text-sm">{flash.success}</p>
+              </div>
+            </>
+          )
+        }
         <div className='block'>
           {errors && Object.values(errors).map((error, index) => (
             <span key={index} className="text-red-500 text-sm block">{error}</span>
